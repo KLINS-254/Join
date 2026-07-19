@@ -1,0 +1,343 @@
+/* ===============================
+   RESET
+================================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#f5f5f5;
+
+padding-bottom:30px;
+
+}
+
+/* ===============================
+TOP HEADER
+================================= */
+
+.topbar{
+
+height:80px;
+
+background:#ff6600;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 18px;
+
+color:#fff;
+
+}
+
+.back,
+.filter{
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(255,255,255,.15);
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.title{
+
+text-align:center;
+
+}
+
+.title h2{
+
+font-size:18px;
+
+font-weight:700;
+
+}
+
+.title p{
+
+font-size:13px;
+
+margin-top:4px;
+
+opacity:.9;
+
+}
+
+/* ===============================
+RESULT COUNT
+================================= */
+
+.results-header{
+
+padding:18px;
+
+font-size:18px;
+
+font-weight:600;
+
+color:#444;
+
+}
+
+/* ===============================
+BUS CARD
+================================= */
+
+.bus-card{
+
+background:#fff;
+
+margin:15px;
+
+border-radius:18px;
+
+padding:18px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+transition:.25s;
+
+}
+
+.bus-card:hover{
+
+transform:translateY(-3px);
+
+}
+
+/* Route Badge */
+
+.route{
+
+display:inline-block;
+
+background:#ff6600;
+
+color:#fff;
+
+padding:6px 14px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:600;
+
+margin-bottom:16px;
+
+}
+
+/* Bus Type */
+
+.bus-type{
+
+display:inline-block;
+
+padding:6px 12px;
+
+border-radius:14px;
+
+font-size:12px;
+
+font-weight:600;
+
+margin-left:10px;
+
+color:#fff;
+
+}
+
+.luxury{
+
+background:#ff6600;
+
+}
+
+.executive{
+
+background:#1565c0;
+
+}
+
+.nissan{
+
+background:#2e7d32;
+
+}
+
+/* ===============================
+TIME ROW
+================================= */
+
+.times{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin:18px 0;
+
+}
+
+.time-box{
+
+text-align:center;
+
+}
+
+.time-box h2{
+
+font-size:20px;
+
+color:#222;
+
+}
+
+.time-box p{
+
+font-size:13px;
+
+color:#777;
+
+}
+
+.duration{
+
+font-size:13px;
+
+font-weight:600;
+
+color:#ff6600;
+
+}
+
+/* ===============================
+BOTTOM INFO
+================================= */
+
+.bottom{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:18px;
+
+padding-top:15px;
+
+border-top:1px solid #eee;
+
+}
+
+.price{
+
+font-size:22px;
+
+font-weight:700;
+
+color:#ff6600;
+
+}
+
+.rating{
+
+font-size:14px;
+
+color:#444;
+
+}
+
+.seats{
+
+font-size:14px;
+
+color:#4caf50;
+
+font-weight:600;
+
+}
+
+/* ===============================
+BUTTON
+================================= */
+
+.view-btn{
+
+background:#ff6600;
+
+border:none;
+
+color:#fff;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.2s;
+
+}
+
+.view-btn:hover{
+
+background:#e85b00;
+
+}
+
+/* ===============================
+MOBILE
+================================= */
+
+@media(max-width:480px){
+
+.bus-card{
+
+margin:12px;
+
+padding:16px;
+
+}
+
+.price{
+
+font-size:20px;
+
+}
+
+.time-box h2{
+
+font-size:18px;
+
+}
+
+  }
