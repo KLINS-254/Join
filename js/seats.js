@@ -344,3 +344,158 @@ seatContainer.appendChild(createSeat(i));
 }
 
    }
+/* ============================================
+   SELECT LAYOUT
+============================================ */
+
+function loadBusLayout(){
+
+switch(bus.type){
+
+case "Luxury":
+
+generateLuxuryLayout();
+
+break;
+
+case "Executive":
+
+generateExecutiveLayout();
+
+break;
+
+case "Nissan":
+
+generateNissanLayout();
+
+break;
+
+default:
+
+generateLuxuryLayout();
+
+}
+
+}
+
+/* ============================================
+   RESTORE SELECTED SEATS
+============================================ */
+
+function restoreSeats(){
+
+const saved=
+
+JSON.parse(
+
+localStorage.getItem("selectedSeats")
+
+);
+
+if(!saved) return;
+
+saved.forEach(number=>{
+
+const seat=document.querySelector(
+
+`.seat[data-number="${number}"]`
+
+);
+
+if(seat &&
+
+!seat.classList.contains("booked")){
+
+seat.classList.remove("available");
+
+seat.classList.add("selected");
+
+selectedSeats.push(number);
+
+}
+
+});
+
+updateSummary();
+
+}
+
+/* ============================================
+   CONTINUE BUTTON
+============================================ */
+
+continueBtn.addEventListener(
+
+"click",
+
+function(){
+
+if(selectedSeats.length===0){
+
+alert(
+
+"Please select at least one seat."
+
+);
+
+return;
+
+}
+
+localStorage.setItem(
+
+"selectedSeats",
+
+JSON.stringify(selectedSeats)
+
+);
+
+const booking={
+
+busId:bus.id,
+
+company:bus.company,
+
+type:bus.type,
+
+route:bus.route,
+
+departure:bus.departure,
+
+arrival:bus.arrival,
+
+price:bus.price,
+
+selectedSeats:selectedSeats,
+
+quantity:selectedSeats.length,
+
+total:selectedSeats.length*bus.price
+
+};
+
+localStorage.setItem(
+
+"bookingSummary",
+
+JSON.stringify(booking)
+
+);
+
+window.location.href=
+
+"passenger.html";
+
+}
+
+);
+
+/* ============================================
+   INITIALIZE
+============================================ */
+
+loadBusLayout();
+
+restoreSeats();
+
+updateSummary();
