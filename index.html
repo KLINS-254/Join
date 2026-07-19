@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seat Selection</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#ececec;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.modal{
+width:400px;
+background:#fff;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 10px 40px rgba(0,0,0,.2);
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+border-bottom:1px solid #eee;
+}
+
+.header h2{
+font-size:28px;
+color:#3c4555;
+}
+
+.close{
+font-size:30px;
+cursor:pointer;
+color:#666;
+}
+
+.bus{
+padding:20px;
+}
+
+.driver{
+display:flex;
+justify-content:flex-end;
+font-size:48px;
+margin-bottom:15px;
+}
+
+.layout{
+display:grid;
+grid-template-columns:auto 60px auto;
+align-items:start;
+}
+
+.column{
+display:grid;
+grid-template-columns:repeat(2,58px);
+gap:10px;
+}
+
+.aisle{
+width:60px;
+}
+
+.seat{
+width:58px;
+height:58px;
+border:3px solid #1e88ff;
+border-radius:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+font-size:18px;
+cursor:pointer;
+transition:.2s;
+background:#fff;
+color:#333;
+}
+
+.seat:hover{
+background:#1e88ff;
+color:#fff;
+}
+
+.booked{
+background:#e6e6e6;
+border-color:#cfcfcf;
+color:#9a9a9a;
+cursor:not-allowed;
+}
+
+.selected{
+background:#1e88ff;
+color:#fff;
+}
+
+.bottom-seat{
+display:flex;
+justify-content:center;
+margin-top:18px;
+}
+
+.footer{
+padding:20px;
+border-top:1px solid #eee;
+}
+
+.footer h3{
+font-size:24px;
+margin-bottom:10px;
+color:#444;
+}
+
+.footer p{
+font-size:18px;
+color:#666;
+}
+
+@media(max-width:420px){
+
+.modal{
+width:100%;
+height:100vh;
+border-radius:0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="modal">
+
+<div class="header">
+<h2>Seat Selection</h2>
+<div class="close">&times;</div>
+</div>
+
+<div class="bus">
+
+<div class="driver">🛞</div>
+
+<div class="layout">
+
+<div class="column" id="leftSeats"></div>
+
+<div class="aisle"></div>
+
+<div class="column" id="rightSeats"></div>
+
+</div>
+
+<div class="bottom-seat">
+<div class="seat" data-seat="25">25</div>
+</div>
+
+</div>
+
+<div class="footer">
+<h3>Selected Seats</h3>
+<p id="selectedSeats">No seats selected</p>
+</div>
+
+</div>
+
+<script>
+
+const leftBooked=[1,2,3,11,13,15];
+const rightBooked=[4,6];
+
+const left=document.getElementById("leftSeats");
+const right=document.getElementById("rightSeats");
+
+function createSeat(name,booked,parent){
+
+const seat=document.createElement("div");
+
+seat.className="seat";
+
+if(booked){
+seat.classList.add("booked");
+}
+
+seat.innerHTML=name;
+seat.dataset.seat=name;
+
+if(!booked){
+
+seat.onclick=function(){
+
+seat.classList.toggle("selected");
+
+updateSeats();
+
+}
+
+}
+
+parent.appendChild(seat);
+
+}
