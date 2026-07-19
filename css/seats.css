@@ -1,315 +1,82 @@
 /* ==========================
-RESET
+AVAILABLE
 ========================== */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-
-background:#f3f4f7;
-
-padding-bottom:140px;
-
-}
-
-/* ==========================
-HEADER
-========================== */
-
-.seat-header{
-
-height:80px;
-
-background:#ff6600;
-
-display:flex;
-
-align-items:center;
-
-padding:0 20px;
-
-color:#fff;
-
-box-shadow:0 3px 10px rgba(0,0,0,.15);
-
-}
-
-.back-btn{
-
-width:45px;
-
-height:45px;
-
-border:none;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.15);
-
-color:#fff;
-
-font-size:18px;
-
-cursor:pointer;
-
-margin-right:15px;
-
-}
-
-.seat-header h2{
-
-font-size:20px;
-
-font-weight:600;
-
-}
-
-.seat-header p{
-
-font-size:13px;
-
-opacity:.9;
-
-}
-
-/* ==========================
-TRIP INFO
-========================== */
-
-.trip-info{
-
-display:flex;
-
-justify-content:space-around;
-
-background:#fff;
-
-padding:18px;
-
-margin:18px;
-
-border-radius:15px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-}
-
-.trip-info h4{
-
-font-size:13px;
-
-color:#888;
-
-margin-bottom:5px;
-
-}
-
-.trip-info p{
-
-font-weight:600;
-
-}
-
-/* ==========================
-LEGEND
-========================== */
-
-.legend{
-
-display:flex;
-
-justify-content:space-around;
-
-margin:15px;
-
-}
-
-.legend div{
-
-display:flex;
-
-align-items:center;
-
-gap:8px;
-
-font-size:13px;
-
-}
-
-.legend .seat{
-
-width:22px;
-
-height:22px;
-
-border-radius:6px;
-
-}
 
 .available{
 
-background:#ffffff;
+background:#1976ff;
+
+color:#fff;
 
 border:2px solid #1976ff;
 
-}
-
-.booked{
-
-background:#d7d7d7;
-
-}
-
-.selected{
-
-background:#1976ff;
-
-}
-
-/* ==========================
-BUS
-========================== */
-
-.bus-layout{
-
-background:#fff;
-
-margin:18px;
-
-padding:20px;
-
-border-radius:18px;
-
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-
-}
-
-.driver{
-
-display:flex;
-
-justify-content:flex-end;
-
-font-size:42px;
-
-margin-bottom:25px;
-
-color:#444;
-
-}
-
-#seatContainer{
-
-display:grid;
-
-grid-template-columns:
-repeat(5,60px);
-
-justify-content:center;
-
-gap:14px;
-
-}
-
-.seat{
-
-width:55px;
-
-height:55px;
-
-border-radius:8px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-weight:600;
-
 cursor:pointer;
 
-transition:.2s;
+transition:.25s;
 
 }
 
 .available:hover{
 
-background:#1976ff;
+transform:scale(1.08);
 
-color:#fff;
+box-shadow:0 0 12px rgba(25,118,255,.45);
 
 }
 
 /* ==========================
-BOTTOM
+BOOKED
 ========================== */
 
-.selection{
+.booked{
 
-position:fixed;
+background:#d7d7d7;
 
-bottom:0;
+color:#8d8d8d;
 
-left:0;
+border:2px solid #c4c4c4;
 
-width:100%;
-
-background:#fff;
-
-padding:20px;
-
-box-shadow:0 -3px 15px rgba(0,0,0,.1);
+cursor:not-allowed;
 
 }
 
-.selection h3{
+/* ==========================
+SELECTED
+========================== */
 
-margin-bottom:10px;
+.selected{
 
-}
-
-#selectedSeats{
-
-font-size:15px;
-
-margin-bottom:12px;
-
-color:#555;
-
-}
-
-#totalPrice{
-
-color:#ff6600;
-
-margin-bottom:15px;
-
-}
-
-#continueBtn{
-
-width:100%;
-
-height:52px;
-
-border:none;
-
-border-radius:12px;
-
-background:#ff6600;
+background:#ff2d2d;
 
 color:#fff;
 
-font-size:18px;
+border:2px solid #ff2d2d;
 
-font-weight:600;
+box-shadow:
+0 0 10px #ff2d2d,
+0 0 20px rgba(255,45,45,.7),
+0 0 35px rgba(255,45,45,.45);
 
-cursor:pointer;
+animation:selectedGlow .9s infinite alternate;
+
+}
+
+@keyframes selectedGlow{
+
+from{
+
+box-shadow:
+0 0 8px #ff2d2d,
+0 0 16px rgba(255,45,45,.5);
+
+}
+
+to{
+
+box-shadow:
+0 0 18px #ff2d2d,
+0 0 35px rgba(255,45,45,.8);
+
+}
 
 }
