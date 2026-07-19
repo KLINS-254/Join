@@ -169,3 +169,100 @@ toggleSeat(seat25);
 }
 
 );
+// =========================
+// TOGGLE SEAT
+// =========================
+
+function toggleSeat(seat){
+
+    if(seat.classList.contains("booked")) return;
+
+    const seatNumber = seat.dataset.seat;
+
+    if(seat.classList.contains("selected")){
+
+        seat.classList.remove("selected");
+
+        seat.classList.add("available");
+
+        selectedSeats = selectedSeats.filter(
+            s => s !== seatNumber
+        );
+
+    }else{
+
+        seat.classList.remove("available");
+
+        seat.classList.add("selected");
+
+        selectedSeats.push(seatNumber);
+
+    }
+
+    updateSelectedSeats();
+
+}
+
+// =========================
+// UPDATE SELECTED SEATS
+// =========================
+
+function updateSelectedSeats(){
+
+    if(selectedSeats.length===0){
+
+        output.innerHTML="No seats selected";
+
+        return;
+
+    }
+
+    output.innerHTML="";
+
+    selectedSeats.sort();
+
+    selectedSeats.forEach(seat=>{
+
+        const badge=document.createElement("span");
+
+        badge.className="seat-badge";
+
+        badge.textContent=seat;
+
+        output.appendChild(badge);
+
+    });
+
+}
+
+// =========================
+// CLOSE BUTTON
+// =========================
+
+const closeBtn=document.querySelector(".close-btn");
+
+closeBtn.addEventListener("click",()=>{
+
+    document.querySelector(".overlay").style.display="none";
+
+});
+
+// =========================
+// ESC KEY CLOSE
+// =========================
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        document.querySelector(".overlay").style.display="none";
+
+    }
+
+});
+
+// =========================
+// INITIALIZE
+// =========================
+
+updateSelectedSeats();
