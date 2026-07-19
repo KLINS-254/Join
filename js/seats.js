@@ -1,94 +1,27 @@
-// ===============================
-// ENA COACH SEAT SELECTION
-// ===============================
+function selectSeat(seat){
 
-// Load selected bus
-const bus = JSON.parse(localStorage.getItem("selectedBus"));
+if(seat.classList.contains("booked")) return;
 
-if (!bus) {
+const seatNo = Number(seat.dataset.number);
 
-    window.location.href = "results.html";
+if(seat.classList.contains("selected")){
 
-}
-
-// ===============================
-// DISPLAY BUS DETAILS
-// ===============================
-
-document.getElementById("busName").textContent =
-bus.company + " " + bus.type;
-
-document.getElementById("route").textContent =
-bus.route.replace("-", " - ");
-
-document.getElementById("departure").textContent =
-bus.departure;
-
-document.getElementById("arrival").textContent =
-bus.arrival;
-
-document.getElementById("price").textContent =
-"KSh " + bus.price;
-
-// ===============================
-// CONTAINERS
-// ===============================
-
-const seatContainer =
-document.getElementById("seatContainer");
-
-const selectedSeatsBox =
-document.getElementById("selectedSeats");
-
-const totalPrice =
-document.getElementById("totalPrice");
-
-// ===============================
-// BOOKED SEATS
-// ===============================
-
-const bookedSeats = [
-
-3,5,8,12,19,21,26
-
-];
-
-let selectedSeats = [];
-
-// ===============================
-// GENERATE SEATS
-// ===============================
-
-function generateSeats(total){
-
-seatContainer.innerHTML="";
-
-for(let i=1;i<=total;i++){
-
-const seat=document.createElement("div");
-
-seat.className="seat";
-
-seat.innerHTML=i;
-
-seat.dataset.number=i;
-
-if(bookedSeats.includes(i)){
-
-seat.classList.add("booked");
-
-}
-
-else{
-
+seat.classList.remove("selected");
 seat.classList.add("available");
 
-seat.onclick=()=>selectSeat(seat);
+selectedSeats = selectedSeats.filter(
+s => s !== seatNo
+);
+
+}else{
+
+seat.classList.remove("available");
+seat.classList.add("selected");
+
+selectedSeats.push(seatNo);
 
 }
 
-seatContainer.appendChild(seat);
+updateBooking();
 
 }
-
-  }
