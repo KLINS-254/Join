@@ -1,26 +1,130 @@
 /* ==========================
-AVAILABLE
+   REAL BUS SEAT
 ========================== */
 
-.available{
+.seat{
 
-background:#1976ff;
+width:52px;
 
-color:#fff;
+height:58px;
 
-border:2px solid #1976ff;
+position:relative;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:14px;
+
+font-weight:700;
+
+border-radius:8px 8px 5px 5px;
 
 cursor:pointer;
 
 transition:.25s;
 
+user-select:none;
+
 }
 
-.available:hover{
+/* Seat Back */
 
-transform:scale(1.08);
+.seat::before{
 
-box-shadow:0 0 12px rgba(25,118,255,.45);
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:6px;
+
+right:6px;
+
+height:38px;
+
+border-radius:8px 8px 4px 4px;
+
+}
+
+/* Seat Cushion */
+
+.seat::after{
+
+content:"";
+
+position:absolute;
+
+bottom:0;
+
+left:10px;
+
+right:10px;
+
+height:14px;
+
+border-radius:0 0 5px 5px;
+
+}
+
+/* Left Arm */
+
+.arm-left{
+
+position:absolute;
+
+left:-4px;
+
+top:12px;
+
+width:6px;
+
+height:28px;
+
+border-radius:4px;
+
+}
+
+/* Right Arm */
+
+.arm-right{
+
+position:absolute;
+
+right:-4px;
+
+top:12px;
+
+width:6px;
+
+height:28px;
+
+border-radius:4px;
+
+}
+
+/* ==========================
+AVAILABLE
+========================== */
+
+.available{
+
+color:#fff;
+
+}
+
+.available::before,
+
+.available::after,
+
+.available .arm-left,
+
+.available .arm-right{
+
+background:#1976ff;
 
 }
 
@@ -30,13 +134,21 @@ BOOKED
 
 .booked{
 
-background:#d7d7d7;
-
-color:#8d8d8d;
-
-border:2px solid #c4c4c4;
+color:#666;
 
 cursor:not-allowed;
+
+}
+
+.booked::before,
+
+.booked::after,
+
+.booked .arm-left,
+
+.booked .arm-right{
+
+background:#bdbdbd;
 
 }
 
@@ -46,36 +158,47 @@ SELECTED
 
 .selected{
 
-background:#ff2d2d;
-
 color:#fff;
-
-border:2px solid #ff2d2d;
-
-box-shadow:
-0 0 10px #ff2d2d,
-0 0 20px rgba(255,45,45,.7),
-0 0 35px rgba(255,45,45,.45);
-
-animation:selectedGlow .9s infinite alternate;
 
 }
 
-@keyframes selectedGlow{
+.selected::before,
+
+.selected::after,
+
+.selected .arm-left,
+
+.selected .arm-right{
+
+background:#ff2d2d;
+
+box-shadow:
+
+0 0 10px #ff2d2d,
+
+0 0 18px rgba(255,0,0,.6),
+
+0 0 30px rgba(255,0,0,.35);
+
+}
+
+.selected{
+
+animation:glow .8s infinite alternate;
+
+}
+
+@keyframes glow{
 
 from{
 
-box-shadow:
-0 0 8px #ff2d2d,
-0 0 16px rgba(255,45,45,.5);
+transform:scale(1);
 
 }
 
 to{
 
-box-shadow:
-0 0 18px #ff2d2d,
-0 0 35px rgba(255,45,45,.8);
+transform:scale(1.06);
 
 }
 
