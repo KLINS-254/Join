@@ -203,3 +203,188 @@ transform:scale(1.06);
 }
 
 }
+/* ==========================================
+   BUS LAYOUT
+========================================== */
+
+.bus-layout{
+
+display:flex;
+
+justify-content:center;
+
+margin-top:20px;
+
+}
+
+#seatContainer{
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+align-items:center;
+
+width:100%;
+
+}
+
+/* Each Row */
+
+.seat-row{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+width:100%;
+
+}
+
+/* Left Side */
+
+.seat-side{
+
+display:flex;
+
+gap:12px;
+
+}
+
+/* Bus Aisle */
+
+.aisle{
+
+width:70px;
+
+}
+
+/* Last Seat */
+
+.last-seat-row{
+
+margin-top:20px;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+/* Seat Number */
+
+.seat span{
+
+position:relative;
+
+z-index:2;
+
+font-size:13px;
+
+font-weight:700;
+
+}
+
+/* Seat Animation */
+
+.seat{
+
+transition:
+
+transform .25s,
+
+box-shadow .25s,
+
+background .25s;
+
+}
+
+.available:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+
+0 0 10px rgba(25,118,255,.4);
+
+}
+
+.selected{
+
+animation:pulseSeat .8s infinite alternate;
+
+}
+
+@keyframes pulseSeat{
+
+from{
+
+transform:scale(1);
+
+}
+
+to{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* Driver Section */
+
+.driver{
+
+display:flex;
+
+justify-content:flex-end;
+
+margin-bottom:30px;
+
+padding-right:30px;
+
+font-size:42px;
+
+color:#444;
+
+}
+
+/* Legend */
+
+.legend{
+
+background:#fff;
+
+padding:15px;
+
+border-radius:14px;
+
+margin:20px;
+
+display:flex;
+
+justify-content:space-around;
+
+box-shadow:
+
+0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.legend div{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+font-size:14px;
+
+font-weight:500;
+
+   }
